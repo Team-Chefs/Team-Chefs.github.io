@@ -78,6 +78,59 @@
             </ol>
         </li>
     </ol>
+
+    
+     <!-- Recipe Functional Requirements -->
+    <h3>Recipe Functional Requirements</h3>
+    <ol>
+        <li>Recipe Linking
+            <ol>
+                <li>When a user adds another user’s public recipe, the system shall create a linked version instead of duplicating it.</li>
+                <li>If the original recipe is edited, all linked versions shall automatically reflect the changes.</li>
+            </ol>
+        </li>
+
+        <li>Duplicate Prevention
+            <ol>
+                <li>The system shall prevent the creation of duplicate recipes.</li>
+                <li>Duplicate detection shall compare recipe titles in a case-insensitive manner.</li>
+            </ol>
+        </li>
+
+        <li>Recipe Validation
+            <ol>
+                <li>Each recipe shall have a title, an image, and at least one step.</li>
+                <li>Recipes shall not be saved or published if they fail to meet these criteria.</li>
+            </ol>
+        </li>
+
+        <li>Functional Timers
+            <ol>
+                <li>If a recipe step specifies a time (e.g., preheating, cooking), the UI shall display a functional countdown timer.</li>
+                <li>The timer shall accurately count down the specified duration and notify the user when complete.</li>
+            </ol>
+        </li>
+
+        <li>Privacy Settings
+            <ol>
+                <li>Recipes shall have two privacy states:
+                    <ul>
+                        <li>Public — visible to all users</li>
+                        <li>Private — visible only to the owner</li>
+                    </ul>
+                </li>
+                <li>Users shall be able to toggle a recipe’s privacy state at any time.</li>
+            </ol>
+        </li>
+
+        <li>Editing Impact
+            <ol>
+                <li>When a recipe is edited, all existing comments and ratings shall be cleared to ensure fair evaluation of the updated version.</li>
+            </ol>
+        </li>
+    </ol>
+
+    
 </section>
 
 
