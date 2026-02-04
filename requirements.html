@@ -18,27 +18,68 @@
 
 <section>
     <h2>Requirements</h2>
-<ul>
-    <li>Requirement 1
-        <ul>
-            <li>Subsection</li>
-        </ul>
-    </li>
+    <h3>Users</h3>
+    <ol>
+        <li>Role Definitions
+            <ol>
+                <li>
+                    The system shall support three distinct user roles:
+                    <ul>
+                        <li>Administrator</li>
+                        <li>Grocery Admin</li>
+                        <li>Regular User</li>
+                    </ul>
+                </li>
+                <li>
+                    The system shall enforce permissions based on role so that users cannot access functionality outside their assigned role.
+                </li>
+            </ol>
+        </li>
 
-    <li>Requirement 2
-        <ul>
-            <li>Subsection 2</li>
-        </ul>
-    </li>
+        <li>Administrator Capabilities
+            <ol>
+                <li>Administrators shall be able to lock a user account.</li>
+                <li>Administrators shall be able to unlock a user account.</li>
+                <li>Administrators shall not be able to create, edit, or view recipes.</li>
+                <li>Administrators shall not be able to manage or view pantries.</li>
+                <li>Administrators shall not be able to modify store inventory.</li>
+            </ol>
+        </li>
 
-    <li>Requirement 3
-        <ul>
-            <li>Subsection 3</li>
-        </ul>
-    </li>
-</ul>
+        <li>Grocery Admin Capabilities
+            <ol>
+                <li>Grocery Admins shall be able to view and manage inventory for one or more assigned stores.</li>
+                <li>Grocery Admins shall not be able to create, edit, or view recipes.</li>
+                <li>Grocery Admins shall not be able to manage or view user pantries.</li>
+                <li>Grocery Admins shall not be able to comment on or rate recipes.</li>
+                <li>Grocery Admins shall not access any Regular-User functionality except inventory management.</li>
+            </ol>
+        </li>
 
+        <li>Regular User Capabilities
+            <ol>
+                <li>Regular Users shall be able to create new recipes.</li>
+                <li>Regular Users shall be able to edit their own recipes.</li>
+                <li>Regular Users shall be able to search for recipes.</li>
+                <li>Regular Users shall be able to rate public recipes.</li>
+                <li>Regular Users shall be able to comment on public recipes.</li>
+                <li>Regular Users shall be able to create and manage their personal pantry.</li>
+                <li>Regular Users shall not be able to lock/unlock accounts.</li>
+                <li>Regular Users shall not have access to grocery-inventory features.</li>
+            </ol>
+        </li>
+
+        <li>Role Assignment & Enforcement
+            <ol>
+                <li>The system shall assign exactly one role per user account.</li>
+                <li>The system shall enforce permissions server-side, preventing unauthorized API access even if a user manipulates the UI.</li>
+                <li>The system shall prevent role escalation without explicit administrative action.</li>
+                <li>The system shall log access attempts that violate role permissions.</li>
+            </ol>
+        </li>
+    </ol>
 </section>
+
 
 </body>
 </html>
