@@ -130,7 +130,37 @@
         </li>
     </ol>
 
-    
+    <!-- Pantry & Grocery System -->
+    <h3>Pantry & Grocery System</h3>
+    <ol>
+        <li>Resource-Constrained Rule
+            <ol>
+                <li>Users shall be prevented from creating recipes that require ingredients not present in their pantry.</li>
+                <li>This restriction shall be enforced during recipe creation and editing.</li>
+            </ol>
+        </li>
+
+        <li>Purchasing Flow
+            <ol>
+                <li>When a user adds an item to their pantry, the system shall immediately decrement the corresponding store inventory.</li>
+                <li>The system shall update the user’s pantry to reflect the added quantity in real time.</li>
+            </ol>
+        </li>
+
+        <li>Warning Systems
+            <ol>
+                <li>If a Grocery Admin deletes an ingredient, the system shall display a visible red warning icon for users whose recipes or pantries contain that ingredient.</li>
+                <li>If a pantry quantity falls below the amount needed for a recipe, the system shall display a warning indicating insufficient quantity.</li>
+            </ol>
+        </li>
+
+        <li>Inventory Display
+            <ol>
+                <li>Stores shall display items with zero quantity as “Out of Stock”.</li>
+                <li>Items shall remain visible in the inventory display, even when out of stock.</li>
+            </ol>
+        </li>
+    </ol>
 </section>
 
 
