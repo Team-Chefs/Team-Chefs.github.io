@@ -18,12 +18,184 @@
 
 <section>
     <h2>Requirements</h2>
-    <ul>
-        <li>Requirement 1</li>
-        <li>Requirement 2</li>
-        <li>Requirement 3</li>
-    </ul>
+    <h3>Users</h3>
+    <ol>
+        <li>Role Definitions
+            <ol>
+                <li>
+                    The system shall support three distinct user roles:
+                    <ul>
+                        <li>Administrator</li>
+                        <li>Grocery Admin</li>
+                        <li>Regular User</li>
+                    </ul>
+                </li>
+                <li>
+                    The system shall enforce permissions based on role so that users cannot access functionality outside their assigned role.
+                </li>
+            </ol>
+        </li>
+
+        <li>Administrator Capabilities
+            <ol>
+                <li>Administrators shall be able to lock a user account.</li>
+                <li>Administrators shall be able to unlock a user account.</li>
+                <li>Administrators shall not be able to create, edit, or view recipes.</li>
+                <li>Administrators shall not be able to manage or view pantries.</li>
+                <li>Administrators shall not be able to modify store inventory.</li>
+            </ol>
+        </li>
+
+        <li>Grocery Admin Capabilities
+            <ol>
+                <li>Grocery Admins shall be able to view and manage inventory for one or more assigned stores.</li>
+                <li>Grocery Admins shall not be able to create, edit, or view recipes.</li>
+                <li>Grocery Admins shall not be able to manage or view user pantries.</li>
+                <li>Grocery Admins shall not be able to comment on or rate recipes.</li>
+                <li>Grocery Admins shall not access any Regular-User functionality except inventory management.</li>
+            </ol>
+        </li>
+
+        <li>Regular User Capabilities
+            <ol>
+                <li>Regular Users shall be able to create new recipes.</li>
+                <li>Regular Users shall be able to edit their own recipes.</li>
+                <li>Regular Users shall be able to search for recipes.</li>
+                <li>Regular Users shall be able to rate public recipes.</li>
+                <li>Regular Users shall be able to comment on public recipes.</li>
+                <li>Regular Users shall be able to create and manage their personal pantry.</li>
+                <li>Regular Users shall not be able to lock/unlock accounts.</li>
+                <li>Regular Users shall not have access to grocery-inventory features.</li>
+            </ol>
+        </li>
+
+        <li>Role Assignment & Enforcement
+            <ol>
+                <li>The system shall assign exactly one role per user account.</li>
+                <li>The system shall enforce permissions server-side, preventing unauthorized API access even if a user manipulates the UI.</li>
+                <li>The system shall prevent role escalation without explicit administrative action.</li>
+                <li>The system shall log access attempts that violate role permissions.</li>
+            </ol>
+        </li>
+    </ol>
+
+    
+     <!-- Recipe Functional Requirements -->
+    <h3>Recipe Functional Requirements</h3>
+    <ol>
+        <li>Recipe Linking
+            <ol>
+                <li>When a user adds another user’s public recipe, the system shall create a linked version instead of duplicating it.</li>
+                <li>If the original recipe is edited, all linked versions shall automatically reflect the changes.</li>
+            </ol>
+        </li>
+
+        <li>Duplicate Prevention
+            <ol>
+                <li>The system shall prevent the creation of duplicate recipes.</li>
+                <li>Duplicate detection shall compare recipe titles in a case-insensitive manner.</li>
+            </ol>
+        </li>
+
+        <li>Recipe Validation
+            <ol>
+                <li>Each recipe shall have a title, an image, and at least one step.</li>
+                <li>Recipes shall not be saved or published if they fail to meet these criteria.</li>
+            </ol>
+        </li>
+
+        <li>Functional Timers
+            <ol>
+                <li>If a recipe step specifies a time (e.g., preheating, cooking), the UI shall display a functional countdown timer.</li>
+                <li>The timer shall accurately count down the specified duration and notify the user when complete.</li>
+            </ol>
+        </li>
+
+        <li>Privacy Settings
+            <ol>
+                <li>Recipes shall have two privacy states:
+                    <ul>
+                        <li>Public — visible to all users</li>
+                        <li>Private — visible only to the owner</li>
+                    </ul>
+                </li>
+                <li>Users shall be able to toggle a recipe’s privacy state at any time.</li>
+            </ol>
+        </li>
+
+        <li>Editing Impact
+            <ol>
+                <li>When a recipe is edited, all existing comments and ratings shall be cleared to ensure fair evaluation of the updated version.</li>
+            </ol>
+        </li>
+    </ol>
+
+    <!-- Pantry & Grocery System -->
+    <h3>Pantry & Grocery System</h3>
+    <ol>
+        <li>Resource-Constrained Rule
+            <ol>
+                <li>Users shall be prevented from creating recipes that require ingredients not present in their pantry.</li>
+                <li>This restriction shall be enforced during recipe creation and editing.</li>
+            </ol>
+        </li>
+
+        <li>Purchasing Flow
+            <ol>
+                <li>When a user adds an item to their pantry, the system shall immediately decrement the corresponding store inventory.</li>
+                <li>The system shall update the user’s pantry to reflect the added quantity in real time.</li>
+            </ol>
+        </li>
+
+        <li>Warning Systems
+            <ol>
+                <li>If a Grocery Admin deletes an ingredient, the system shall display a visible red warning icon for users whose recipes or pantries contain that ingredient.</li>
+                <li>If a pantry quantity falls below the amount needed for a recipe, the system shall display a warning indicating insufficient quantity.</li>
+            </ol>
+        </li>
+
+        <li>Inventory Display
+            <ol>
+                <li>Stores shall display items with zero quantity as “Out of Stock”.</li>
+                <li>Items shall remain visible in the inventory display, even when out of stock.</li>
+            </ol>
+        </li>
+    </ol>
+
+    <!-- UI & Search Features -->
+    <h3>UI & Search Features</h3>
+    <ol>
+        <li>Landing Page
+            <ol>
+                <li>Guests and logged-in users shall see a landing page with a 2D carousel or scroller of public recipes.</li>
+                <li>The carousel shall allow browsing multiple recipes in horizontal or vertical scroll format.</li>
+            </ol>
+        </li>
+
+        <li>Search Capability
+            <ol>
+                <li>Users shall be able to search recipes by name, ingredient, rating, or any combination.</li>
+                <li>Search results shall persist across page navigation.</li>
+            </ol>
+        </li>
+
+        <li>Ratings & Comments
+            <ol>
+                <li>Registered users shall be able to leave one comment and one 1–5 star rating per recipe.</li>
+                <li>Users shall be able to edit their comments, and edited comments shall be labeled as “edited”.</li>
+                <li>Users shall not be able to rate their own recipes.</li>
+            </ol>
+        </li>
+
+        <li>Technical Constraints
+            <ol>
+                <li>The system shall not require mobile support.</li>
+                <li>The system shall use a basic, locally hosted database.</li>
+            </ol>
+        </li>
+    </ol>
 </section>
+
 
 </body>
 </html>
